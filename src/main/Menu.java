@@ -2,20 +2,29 @@ package main;
 
 
 
+import factory.StudentRandomFactory;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Menu
 {
     public static void FindMarek(List<Pupil> pupilListOne)
     {
-        //for (Pupil pupil: pupilListOne)
+        boolean marekExist = false;
+
         for (int i = 0; i < pupilListOne.size(); i++)
         {
             if (pupilListOne.get(i).getName() == "Marek")
             {
-                System.out.println("Marek na pozycji: " + i);
+                System.out.println("Marek na pozycji: " + (i +1));
+                marekExist = true;
             }
+        }
+        if (marekExist == false)
+        {
+            System.out.println("Marek nie został wylosowany");
         }
     }
 
@@ -25,47 +34,40 @@ public class Menu
 
         for (int i = 0; i < pupilListTwo.size(); i++)
         {
-            if (pupilListTwo.get(i).getName().charAt(0) == 'A')
+            if (pupilListTwo.get(i).getName().startsWith("A"))
             {
                 sum += pupilListTwo.get(i).getAge();
             }
         }
 
-        System.out.println("Wiek uczniów o imieniu uczniów na A: " + sum);
+        System.out.println("Wiek uczniów o imieniu na A: " + sum);
     }
 
     public static void main(String[] args)
     {
-        List<Pupil> pupilList = new ArrayList<>();
-        List<Pupil> pupilListOne = new ArrayList<>();
-        List<Pupil> pupilListTwo = new ArrayList<>();
+        List<String> names = Arrays.asList("Agnieszka", "Joanna", "Patrycja", "Zuzanna", "Anna", "Tomasz", "Andrzej", "Adam", "Marek", "Patryk");
+        List<String> surnames = Arrays.asList("Nowak", "Wójcik", "Kowalczyk", "Woźniak", "Mazur", "Krawczyk", "Kaczmarek", "Zając", "Król", "Dudek");
 
-        pupilList.add(new Pupil("Marek", "Sosia", 32));
-        pupilList.add(new Pupil("Marek", "Madziarek", 22));
-        pupilList.add(new Pupil("Marek", "Gosia", 31));
-        pupilList.add(new Pupil("Janek", "Pawełek", 2));
-        pupilList.add(new Pupil("Jola", "Lojalna", 32));
-        pupilList.add(new Pupil("Adam", "Bolek", 32));
-        pupilList.add(new Pupil("Monia", "Maniana", 32));
-        pupilList.add(new Pupil("Lojalna", "Jola", 32));
-        pupilList.add(new Pupil("Zbigniew", "Zbyszek", 32));
-        pupilList.add(new Pupil("Adam", "Mialczynski", 33));
+        StudentRandomFactory factory = new StudentRandomFactory();
 
-        for (int i = 0; i < pupilList.size(); i++)
+        List<Pupil> pupilList = factory.resoultList(names, surnames, 20);
+
+
+        List<Pupil> pupilListOne = pupilList.subList(0, 10);
+        List<Pupil> pupilListTwo = pupilList.subList(10, 20);
+
+        System.out.println("Lista pierwsza: ");
+        for (Pupil pupil: pupilListOne)
         {
-            if (i%2 == 0)
-            {
-                pupilListOne.add(pupilList.get(i));
-            }
-            else
-            {
-                pupilListTwo.add(pupilList.get(i));
-            }
+            pupil.printInfo();
         }
-
-
         FindMarek(pupilListOne);
 
+        System.out.println("\nLista druga: ");
+        for (Pupil pupil: pupilListTwo)
+        {
+            pupil.printInfo();
+        }
         SumAge(pupilListTwo);
 
     }

@@ -44,4 +44,10 @@ public class Pupil
     }
 
 
+    public void printInfo()
+    {
+        System.out.println("Imię: " + name +
+                ", Nazwisko: " + surname +
+                ", Wiek: " + age);
+    }
 }
