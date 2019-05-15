@@ -3,6 +3,7 @@ package main;
 
 
 import factory.StudentRandomFactory;
+import filemanager.SaveToFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +52,10 @@ public class Menu
         StudentRandomFactory factory = new StudentRandomFactory();
 
         List<Pupil> pupilList = factory.resoultList(names, surnames, 20);
+
+        SaveToFile saveToFile = new SaveToFile(pupilList);
+
+
 
 
         List<Pupil> pupilListOne = pupilList.subList(0, 10);
