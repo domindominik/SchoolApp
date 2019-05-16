@@ -13,7 +13,7 @@ public class StudentRandomFactory
         List<Pupil> resoultList = new LinkedList<>();
 
         Random random = new Random();
-        random.setSeed(System.currentTimeMillis());
+        random.setSeed(System.currentTimeMillis() * numberOfPupils * names.size() * surnames.size());
 
         int nameIndex, surnameIndex;
 
