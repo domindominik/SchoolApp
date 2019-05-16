@@ -1,16 +1,20 @@
 package main;
 
-public class Pupil
+import java.io.Serializable;
+
+public class Pupil implements Serializable
 {
     private String name;
     private String surname;
     private int age;
+    private int id;
 
-    public Pupil(String name, String surname, int age)
+    public Pupil(String name, String surname, int age, int id)
     {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.id = id;
     }
 
     public String getName()
@@ -28,6 +32,11 @@ public class Pupil
         return age;
     }
 
+    public int getId()
+    {
+        return id;
+    }
+
     public void setName(String name)
     {
         this.name = name;
@@ -43,11 +52,16 @@ public class Pupil
         this.age = age;
     }
 
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public void printInfo()
     {
         System.out.println("Imię: " + name +
                 ", Nazwisko: " + surname +
-                ", Wiek: " + age);
+                ", Wiek: " + age +
+                ", Numer: " + id);
     }
 }

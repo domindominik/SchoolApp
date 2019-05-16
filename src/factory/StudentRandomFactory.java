@@ -22,7 +22,7 @@ public class StudentRandomFactory
             nameIndex = random.nextInt(names.size());
             surnameIndex = random.nextInt(surnames.size());
 
-            resoultList.add(new Pupil(names.get(nameIndex), surnames.get(surnameIndex), random.nextInt(14) + 15));
+            resoultList.add(new Pupil(names.get(nameIndex), surnames.get(surnameIndex), random.nextInt(14) + 15, (i+1)));
         }
         return resoultList;
     }

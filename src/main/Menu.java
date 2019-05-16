@@ -1,11 +1,8 @@
 package main;
 
 
-
 import factory.StudentRandomFactory;
 import filemanager.SaveToFile;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,15 +48,15 @@ public class Menu
 
         StudentRandomFactory factory = new StudentRandomFactory();
 
-        List<Pupil> pupilList = factory.resoultList(names, surnames, 20);
+        List<Pupil> pupilList = factory.resoultList(names, surnames, 40);
 
-        SaveToFile saveToFile = new SaveToFile(pupilList);
+        SaveToFile saveToFile = new SaveToFile();
+        saveToFile.saveToFile(pupilList);
 
 
 
-
-        List<Pupil> pupilListOne = pupilList.subList(0, 10);
-        List<Pupil> pupilListTwo = pupilList.subList(10, 20);
+        List<Pupil> pupilListOne = pupilList.subList(0, 20);
+        List<Pupil> pupilListTwo = pupilList.subList(20, 40);
 
         System.out.println("Lista pierwsza: ");
         for (Pupil pupil: pupilListOne)
